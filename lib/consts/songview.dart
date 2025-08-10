@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:musio/screens/albumview.dart';
+import 'package:musio/screens/artistview.dart';
 
 class SmallSongDisplay extends StatefulWidget {
   const SmallSongDisplay({super.key});
@@ -124,7 +126,7 @@ class _SongDisplayState extends State<SongDisplay> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            width: 380.w,
+            width: 360.w,
             height: 60.h,
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.secondary,
@@ -214,27 +216,170 @@ class _SongDisplayState extends State<SongDisplay> {
   }
 }
 
-//Album Display
-class AlbumPreview extends StatefulWidget {
-  const AlbumPreview({super.key});
+// Album Display
+class AlbumPreview extends StatelessWidget {
+  final String title;
+  final String artist;
+  final String imagePath;
 
-  @override
-  State<AlbumPreview> createState() => _AlbumPreviewState();
-}
+  const AlbumPreview({
+    super.key,
+    required this.title,
+    required this.artist,
+    required this.imagePath,
+  });
 
-class _AlbumPreviewState extends State<AlbumPreview> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Album Preview',
-          style: TextStyle(
-            fontSize: 24,
-            fontFamily: 'Cambria',
-            fontWeight: FontWeight.bold,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Albumview()),
+          );
+        },
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 150.h,
+              width: 150.w,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.r),
+                child: Image.asset(
+                  imagePath,
+                  width: 150.w,
+                  height: 150.h,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            SizedBox(height: 6.h),
+            Text(
+              title,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSecondary,
+                fontSize: 18.sp,
+                height: 0.8,
+                fontFamily: 'Taile',
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            Text(
+              artist,
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSecondary,
+                fontSize: 16.sp,
+                height: 0.8,
+                fontFamily: 'Cambria',
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+//Artist Display
+class ArtistPreview extends StatelessWidget {
+  final String name;
+  final String imagePath;
+
+  const ArtistPreview({super.key, required this.name, required this.imagePath});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Artistview()),
+            );
+          },
+          child: Container(
+            height: 120.h,
+            width: 120.w,
+            decoration: BoxDecoration(shape: BoxShape.circle),
+            child: ClipOval(
+              child: Image.asset(
+                imagePath,
+                width: 120.w,
+                height: 120.h,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         ),
+        SizedBox(height: 8.h),
+        Text(
+          name,
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 16.sp,
+            fontWeight: FontWeight.bold,
+            fontFamily: 'Taile',
+          ),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+        ),
+      ],
+    );
+  }
+}
+
+// Playlist Display
+class PlaylistPreview extends StatelessWidget {
+  const PlaylistPreview({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 10.w),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 150.h,
+            width: 150.w,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.r),
+              child: Image.asset(
+                'assets/images/albumcover.jpeg',
+                width: 150.w,
+                height: 150.h,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          SizedBox(height: 6.h),
+          Text(
+            "100% Hits",
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onSecondary,
+              fontSize: 18.sp,
+              height: 0.8,
+              fontFamily: 'Taile',
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        ],
       ),
     );
   }

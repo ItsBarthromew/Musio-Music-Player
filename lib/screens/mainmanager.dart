@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:musio/consts/Musicwidget.dart';
 import 'package:musio/screens/albums.dart';
@@ -33,54 +34,64 @@ class _HomeManagerState extends State<HomeManager> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(
-        children: [
-          // Main page switcher
-          IndexedStack(index: _selectedIndex, children: _pages),
-
-          // Music player floating above all pages
-          const Positioned(
-            left: 8,
-            right: 8,
-            bottom: 4,
-            child: MusicPlayerBar(),
-          ),
-        ],
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Theme.of(context).colorScheme.primary, // Match your bg
+        statusBarIconBrightness: Brightness.light, // Light icons for dark bg
+        statusBarBrightness: Brightness.dark, // For iOS
       ),
+      child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        body: Stack(
+          children: [
+            // Main page switcher
+            IndexedStack(index: _selectedIndex, children: _pages),
 
-      // Working nav bar
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        backgroundColor: Colors.black,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(LucideIcons.house), label: 'Home'),
-          BottomNavigationBarItem(
-            icon: Icon(LucideIcons.music2),
-            label: 'Songs',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(LucideIcons.discAlbum),
-            label: 'Albums',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(LucideIcons.users),
-            label: 'Artists',
-          ),
+            // Music player floating above all pages
+            const Positioned(
+              left: 8,
+              right: 8,
+              bottom: 4,
+              child: MusicPlayerBar(),
+            ),
+          ],
+        ),
 
-          BottomNavigationBarItem(
-            icon: Icon(LucideIcons.listMusic),
-            label: 'Playlists',
-          ),
-
-          BottomNavigationBarItem(
-            icon: Icon(LucideIcons.download),
-            label: 'Downloads',
-          ),
-        ],
+        // Working nav bar
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Theme.of(context).colorScheme.secondary,
+          backgroundColor: Theme.of(context).colorScheme.primary,
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(LucideIcons.house),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(LucideIcons.music2),
+              label: 'Songs',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(LucideIcons.discAlbum),
+              label: 'Albums',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(LucideIcons.users),
+              label: 'Artists',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(LucideIcons.listMusic),
+              label: 'Playlists',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(LucideIcons.download),
+              label: 'Downloads',
+            ),
+          ],
+        ),
       ),
     );
   }

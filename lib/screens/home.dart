@@ -16,45 +16,48 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: theme.colorScheme.primary,
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
               // App Bar
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Column(
                 children: [
-                  IconButton(
-                    icon: const Icon(LucideIcons.menu, color: Colors.white),
-                    onPressed: () {},
-                  ),
-                  Center(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        SizedBox(height: 8.h),
-                        Image.asset(
-                          'assets/images/logo.png',
-                          width: 61.w,
-                          height: 61.h,
-                          fit: BoxFit.cover,
-                        ),
-                        Text(
-                          'GOOD EVENING',
-                          style: TextStyle(
-                            fontFamily: "Taile",
-                            fontWeight: FontWeight.bold,
-                            color: theme.colorScheme.onPrimary,
-                            fontSize: 20.sp,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        icon: const Icon(LucideIcons.menu, color: Colors.white),
+                        onPressed: () {},
+                      ),
+                      Column(
+                        children: [
+                          SizedBox(height: 8.h),
+                          Image.asset(
+                            'assets/images/logo.png',
+                            width: 61.w,
+                            height: 61.h,
                           ),
+                        ],
+                      ),
+                      IconButton(
+                        icon: const Icon(
+                          LucideIcons.search,
+                          color: Colors.white,
                         ),
-                      ],
-                    ),
+                        onPressed: () {},
+                      ),
+                    ],
                   ),
-                  IconButton(
-                    icon: const Icon(LucideIcons.search, color: Colors.white),
-                    onPressed: () {},
+                  Text(
+                    'GOOD EVENING',
+                    style: TextStyle(
+                      fontFamily: "Taile",
+                      fontWeight: FontWeight.bold,
+                      color: theme.colorScheme.onPrimary,
+                      fontSize: 20.sp,
+                    ),
                   ),
                 ],
               ),
