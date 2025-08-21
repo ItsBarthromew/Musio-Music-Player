@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:musio/consts/Musicwidget.dart';
 import 'package:musio/consts/songview.dart';
 import 'package:musio/screens/albums.dart';
 import 'package:musio/screens/artists.dart';
@@ -44,6 +43,29 @@ class _ArtistviewState extends State<Artistview> {
       ),
       child: Stack(
         children: [
+          // Back button
+          Positioned(
+            top: 16.h,
+            left: 8.w,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                padding: EdgeInsets.all(6.w),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.5),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  LucideIcons.arrowLeft,
+                  color: Colors.white,
+                  size: 24.sp,
+                ),
+              ),
+            ),
+          ),
+
           Scaffold(
             // Working nav bar
             bottomNavigationBar: BottomNavigationBar(
@@ -99,6 +121,28 @@ class _ArtistviewState extends State<Artistview> {
                           width: double.infinity,
                           height: 250.h,
                           fit: BoxFit.cover,
+                        ),
+                      ),
+                      // Back button
+                      Positioned(
+                        top: 30.h,
+                        left: 8.w,
+                        child: GestureDetector(
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(10.w),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.surface,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Icon(
+                              LucideIcons.arrowLeft,
+                              color: Theme.of(context).colorScheme.onSurface,
+                              size: 26.sp,
+                            ),
+                          ),
                         ),
                       ),
                       Positioned(
@@ -172,7 +216,7 @@ class _ArtistviewState extends State<Artistview> {
                               4,
                               (index) => AlbumPreview(
                                 artist: 'Kendrick Lamar',
-                                imagePath: 'assets/images/albumcover.jpeg',
+                                imagePath: 'assets/images/albumcover.jpg',
                                 title: 'MR. MORALE',
                               ),
                             ),
@@ -210,14 +254,6 @@ class _ArtistviewState extends State<Artistview> {
                 ),
               ],
             ),
-          ),
-
-          // Music player floating above all pages
-          const Positioned(
-            left: 8,
-            right: 8,
-            bottom: 60,
-            child: MusicPlayerBar(),
           ),
         ],
       ),

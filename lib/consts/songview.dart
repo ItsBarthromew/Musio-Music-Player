@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:musio/screens/albumview.dart';
 import 'package:musio/screens/artistview.dart';
+import 'package:musio/screens/playlistview.dart';
 
 class SmallSongDisplay extends StatefulWidget {
   const SmallSongDisplay({super.key});
@@ -153,7 +154,7 @@ class _SongDisplayState extends State<SongDisplay> {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10.r),
                     child: Image.asset(
-                      'assets/images/albumcover.jpeg',
+                      'assets/images/albumcover.jpg',
                       width: 50.w,
                       height: 50.h,
                       fit: BoxFit.cover,
@@ -304,10 +305,10 @@ class ArtistPreview extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.push(
+            Navigator.of(
               context,
-              MaterialPageRoute(builder: (context) => Artistview()),
-            );
+              rootNavigator: false,
+            ).push(MaterialPageRoute(builder: (context) => const Artistview()));
           },
           child: Container(
             height: 120.h,
@@ -323,7 +324,7 @@ class ArtistPreview extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 8.h),
+        SizedBox(height: 2.h),
         Text(
           name,
           style: TextStyle(
@@ -346,40 +347,48 @@ class PlaylistPreview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10.w),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 150.h,
-            width: 150.w,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(10.r),
-              child: Image.asset(
-                'assets/images/albumcover.jpeg',
-                width: 150.w,
-                height: 150.h,
-                fit: BoxFit.cover,
+    return GestureDetector(
+      onTap: () {
+        Navigator.of(
+          context,
+          rootNavigator: false,
+        ).push(MaterialPageRoute(builder: (context) => const Playlistview()));
+      },
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 10.w),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            SizedBox(
+              height: 150.h,
+              width: 150.w,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10.r),
+                child: Image.asset(
+                  'assets/images/albumcover.jpeg',
+                  width: 150.w,
+                  height: 150.h,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          SizedBox(height: 6.h),
-          Text(
-            "100% Hits",
-            style: TextStyle(
-              color: Theme.of(context).colorScheme.onSecondary,
-              fontSize: 18.sp,
-              height: 0.8,
-              fontFamily: 'Taile',
-              fontWeight: FontWeight.bold,
+            SizedBox(height: 6.h),
+            Text(
+              "100% Hits",
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSecondary,
+                fontSize: 18.sp,
+                height: 0.8,
+                fontFamily: 'Taile',
+                fontWeight: FontWeight.bold,
+              ),
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
             ),
-            textAlign: TextAlign.center,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

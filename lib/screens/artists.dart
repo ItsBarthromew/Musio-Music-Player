@@ -165,7 +165,7 @@ class _ArtistsState extends State<Artists> {
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         crossAxisSpacing: 1.w,
-                        mainAxisSpacing: 16.h,
+                        mainAxisSpacing: 18.h,
                         childAspectRatio: 0.9,
                       ),
                       itemCount: demoArtists.length,
