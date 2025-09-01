@@ -10,15 +10,16 @@ dependencies:
   flutter:
     sdk: flutter
 
+
   cupertino_icons: ^1.0.8
   flutter_screenutil: ^5.9.3
-  lucide_icons_flutter: ^3.0.7
+  lucide_icons_flutter: ^3.0.9
   stroke_text: ^1.0.0
+  on_audio_query: ^2.9.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
   flutter_lints: ^5.0.0
 
 flutter:
@@ -37,4 +38,3 @@ flutter:
       fonts:
         - asset: assets/fonts/cambria.ttf
         - asset: assets/fonts/cambriabold.ttf
-
