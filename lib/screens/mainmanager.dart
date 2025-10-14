@@ -92,7 +92,7 @@ class _HomeManagerState extends State<HomeManager> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: IconImage(
-                'assets/images/menu.png',
+                'assets/images/icons/menu.png',
                 width: 30.w,
                 height: 30.h,
                 color: Colors.white,
@@ -103,15 +103,15 @@ class _HomeManagerState extends State<HomeManager> {
                 SizedBox(height: 8.h),
                 Image.asset(
                   'assets/images/logo.png',
-                  width: 60.w,
-                  height: 60.h,
+                  width: 61.w,
+                  height: 61.h,
                 ),
               ],
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: IconImage(
-                'assets/images/search.png',
+                'assets/images/icons/search.png',
                 width: 30.w,
                 height: 30.h,
                 color: Colors.white,
