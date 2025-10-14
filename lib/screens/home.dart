@@ -1,9 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
-import 'package:musio/consts/bottomnavbar.dart';
 import 'package:musio/consts/colors.dart';
 import 'package:musio/consts/songview.dart';
+
+// Add this IconImage widget if it's not defined elsewhere
+class IconImage extends StatelessWidget {
+  final String assetPath;
+  final double width;
+  final double height;
+  final Color? color;
+
+  const IconImage(
+    this.assetPath, {
+    Key? key,
+    required this.width,
+    required this.height,
+    this.color,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset(assetPath, width: width, height: height, color: color);
+  }
+}
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -21,46 +41,18 @@ class _HomeState extends State<Home> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              // App Bar
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        icon: const Icon(LucideIcons.menu, color: Colors.white),
-                        onPressed: () {},
-                      ),
-                      Column(
-                        children: [
-                          SizedBox(height: 8.h),
-                          Image.asset(
-                            'assets/images/logo.png',
-                            width: 61.w,
-                            height: 61.h,
-                          ),
-                        ],
-                      ),
-                      IconButton(
-                        icon: const Icon(
-                          LucideIcons.search,
-                          color: Colors.white,
-                        ),
-                        onPressed: () {},
-                      ),
-                    ],
+              Center(
+                child: Text(
+                  'GOOD EVENING',
+                  style: TextStyle(
+                    fontFamily: "Cambria",
+                    fontWeight: FontWeight.bold,
+                    color: theme.colorScheme.onPrimary,
+                    fontSize: 20.sp,
                   ),
-                  Text(
-                    'GOOD EVENING',
-                    style: TextStyle(
-                      fontFamily: "Taile",
-                      fontWeight: FontWeight.bold,
-                      color: theme.colorScheme.onPrimary,
-                      fontSize: 20.sp,
-                    ),
-                  ),
-                ],
+                ),
               ),
+
               SizedBox(height: 10.h),
 
               //Stats Section

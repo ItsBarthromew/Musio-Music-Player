@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:musio/consts/colors.dart';
 import 'package:musio/consts/songview.dart';
+import 'package:musio/screens/home.dart';
 
 class Albums extends StatefulWidget {
   const Albums({super.key});
@@ -89,31 +90,6 @@ class _AlbumsState extends State<Albums> {
       body: SafeArea(
         child: Column(
           children: [
-            // App Bar
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: const Icon(LucideIcons.menu, color: Colors.white),
-                  onPressed: () {},
-                ),
-                Column(
-                  children: [
-                    SizedBox(height: 8.h),
-                    Image.asset(
-                      'assets/images/logo.png',
-                      width: 61.w,
-                      height: 61.h,
-                    ),
-                  ],
-                ),
-                IconButton(
-                  icon: const Icon(LucideIcons.search, color: Colors.white),
-                  onPressed: () {},
-                ),
-              ],
-            ),
-
             // Control Buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

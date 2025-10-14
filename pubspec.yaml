@@ -15,7 +15,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   lucide_icons_flutter: ^3.0.9
   stroke_text: ^1.0.0
-  on_audio_query: ^2.9.0
+  permission_handler: any
 
 dev_dependencies:
   flutter_test:
@@ -28,6 +28,7 @@ flutter:
   assets:
     - assets/
     - assets/images/
+    - assets/images/icons/
 
   fonts:
     - family: Taile
@@ -38,3 +39,7 @@ flutter:
       fonts:
         - asset: assets/fonts/cambria.ttf
         - asset: assets/fonts/cambriabold.ttf
+    - family: Clarendon
+      fonts:
+        - asset: assets/fonts/clarendon.otf
+        - asset: assets/fonts/clarendon-bold.otf

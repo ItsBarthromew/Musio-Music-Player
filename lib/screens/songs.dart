@@ -82,32 +82,8 @@ class _SongsState extends State<Songs> {
       body: SafeArea(
         child: Column(
           children: [
-            // Header with logo and controls
             Column(
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    IconButton(
-                      icon: const Icon(LucideIcons.menu, color: Colors.white),
-                      onPressed: () {},
-                    ),
-                    Column(
-                      children: [
-                        SizedBox(height: 8.h),
-                        Image.asset(
-                          'assets/images/logo.png',
-                          width: 61.w,
-                          height: 61.h,
-                        ),
-                      ],
-                    ),
-                    IconButton(
-                      icon: const Icon(LucideIcons.search, color: Colors.white),
-                      onPressed: () {},
-                    ),
-                  ],
-                ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

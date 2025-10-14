@@ -89,31 +89,6 @@ class _ArtistsState extends State<Artists> {
       body: SafeArea(
         child: Column(
           children: [
-            // App Bar
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: const Icon(LucideIcons.menu, color: Colors.white),
-                  onPressed: () {},
-                ),
-                Column(
-                  children: [
-                    SizedBox(height: 8.h),
-                    Image.asset(
-                      'assets/images/logo.png',
-                      width: 61.w,
-                      height: 61.h,
-                    ),
-                  ],
-                ),
-                IconButton(
-                  icon: const Icon(LucideIcons.search, color: Colors.white),
-                  onPressed: () {},
-                ),
-              ],
-            ),
-
             // Control Buttons
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

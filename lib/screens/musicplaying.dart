@@ -37,24 +37,24 @@ class _MusicplayingState extends State<Musicplaying> {
             children: [
               SizedBox(height: 200.h),
               SizedBox(
-                height: 320.h,
-                width: 320.w,
+                height: 350.h,
+                width: 350.w,
                 child: ClipRRect(
-                  borderRadius: BorderRadius.circular(40.r),
+                  borderRadius: BorderRadius.circular(20.r),
                   child: Image.asset(
                     'assets/images/albumcover.jpeg',
-                    width: 150.w,
-                    height: 150.h,
+                    width: 350.w,
+                    height: 350.h,
                     fit: BoxFit.cover,
                   ),
                 ),
               ),
-              SizedBox(height: 30.h),
+              SizedBox(height: 20.h),
               Text(
                 "COUNT ON ME",
                 style: TextStyle(
                   color: Colors.white,
-                  fontFamily: "Taile",
+                  fontFamily: "Clarendon",
                   fontSize: 34.sp,
                   height: 1,
                   fontWeight: FontWeight.bold,
@@ -64,8 +64,8 @@ class _MusicplayingState extends State<Musicplaying> {
                 "Kendrick Lamar",
                 style: TextStyle(
                   color: Colors.white,
-                  fontFamily: "Cambria",
-                  fontSize: 26.sp,
+                  fontFamily: "Clarendon",
+                  fontSize: 22.sp,
                   height: 0.8,
                 ),
               ),
@@ -78,9 +78,9 @@ class _MusicplayingState extends State<Musicplaying> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     IconButton(
-                      icon: Icon(
-                        LucideIcons.plus,
-                        size: 28.sp,
+                      icon: ImageIcon(
+                        AssetImage("assets/images/icons/music-square-add.png"),
+                        size: 30.sp,
                         color: Colors.white,
                       ),
                       onPressed: () {},

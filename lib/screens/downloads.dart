@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:musio/consts/colors.dart';
 
 class Downloads extends StatefulWidget {
@@ -18,30 +17,6 @@ class _DownloadsState extends State<Downloads> {
       body: SafeArea(
         child: Column(
           children: [
-            // App Bar
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                IconButton(
-                  icon: const Icon(LucideIcons.menu, color: Colors.white),
-                  onPressed: () {},
-                ),
-                Column(
-                  children: [
-                    SizedBox(height: 8.h),
-                    Image.asset(
-                      'assets/images/logo.png',
-                      width: 61.w,
-                      height: 61.h,
-                    ),
-                  ],
-                ),
-                IconButton(
-                  icon: const Icon(LucideIcons.search, color: Colors.white),
-                  onPressed: () {},
-                ),
-              ],
-            ),
             Text(
               'DOWNLOAD YOUR MUSIC',
               style: TextStyle(

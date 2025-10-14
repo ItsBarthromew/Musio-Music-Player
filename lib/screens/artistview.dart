@@ -67,42 +67,6 @@ class _ArtistviewState extends State<Artistview> {
           ),
 
           Scaffold(
-            // Working nav bar
-            bottomNavigationBar: BottomNavigationBar(
-              currentIndex: _selectedIndex,
-              onTap: _onItemTapped,
-              selectedItemColor: Colors.white,
-              unselectedItemColor: Theme.of(context).colorScheme.secondary,
-              backgroundColor: Theme.of(context).colorScheme.primary,
-              type: BottomNavigationBarType.fixed,
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(LucideIcons.house),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(LucideIcons.music2),
-                  label: 'Songs',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(LucideIcons.discAlbum),
-                  label: 'Albums',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(LucideIcons.users),
-                  label: 'Artists',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(LucideIcons.listMusic),
-                  label: 'Playlists',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(LucideIcons.download),
-                  label: 'Downloads',
-                ),
-              ],
-            ),
-
             backgroundColor: Theme.of(context).colorScheme.primary,
             body: Column(
               children: [
@@ -123,6 +87,7 @@ class _ArtistviewState extends State<Artistview> {
                           fit: BoxFit.cover,
                         ),
                       ),
+
                       // Back button
                       Positioned(
                         top: 30.h,
