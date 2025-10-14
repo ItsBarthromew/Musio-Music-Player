@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lucide_icons_flutter/lucide_icons.dart';
 import 'package:musio/consts/colors.dart';
 import 'package:musio/consts/songview.dart';
-import 'package:musio/screens/home.dart';
 
 class Albums extends StatefulWidget {
   const Albums({super.key});
