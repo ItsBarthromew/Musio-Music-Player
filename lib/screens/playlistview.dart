@@ -136,7 +136,11 @@ class _PlaylistviewState extends State<Playlistview> {
                       14,
                       (index) => Padding(
                         padding: EdgeInsets.only(bottom: 8.h),
-                        child: const SongDisplay(),
+                        child: const SongDisplay(
+                          title: '',
+                          artist: '',
+                          length: '',
+                        ),
                       ),
                     ),
                   ),

@@ -205,19 +205,21 @@ class _HomeManagerState extends State<HomeManager> {
         currentIndex: _selectedIndex,
         selectedLabelStyle: TextStyle(
           fontFamily: "Cambria",
-          fontSize: 12,
+          fontSize: 14,
+          height: 0.8,
           fontWeight: FontWeight.bold,
         ),
         unselectedLabelStyle: TextStyle(
           fontFamily: "Cambria",
-          fontSize: 12,
+          fontSize: 14,
+          height: 0.8,
           fontWeight: FontWeight.bold,
         ),
         onTap: _onItemTapped,
         selectedItemColor: Colors.white,
         unselectedItemColor: Theme.of(
           context,
-        ).colorScheme.secondary.withOpacity(0.7),
+        ).colorScheme.secondary.withOpacity(0.6),
         backgroundColor: Colors.transparent,
         elevation: 0,
         type: BottomNavigationBarType.fixed,
@@ -235,41 +237,41 @@ class _HomeManagerState extends State<HomeManager> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: _buildImageIcon('assets/images/icons/songs.png'),
+            icon: _buildImageIcon('assets/images/icons/music.png'),
             activeIcon: _buildImageIcon(
-              'assets/images/icons/songs.png',
+              'assets/images/icons/music.png',
               isActive: true,
             ),
             label: 'Songs',
           ),
           BottomNavigationBarItem(
-            icon: _buildImageIcon('assets/images/icons/albums.png'),
+            icon: _buildImageIcon('assets/images/icons/music-square.png'),
             activeIcon: _buildImageIcon(
-              'assets/images/icons/albums.png',
+              'assets/images/icons/music-square.png',
               isActive: true,
             ),
             label: 'Albums',
           ),
           BottomNavigationBarItem(
-            icon: _buildImageIcon('assets/images/icons/artists.png'),
+            icon: _buildImageIcon('assets/images/icons/user.png'),
             activeIcon: _buildImageIcon(
-              'assets/images/icons/artists.png',
+              'assets/images/icons/user.png',
               isActive: true,
             ),
             label: 'Artists',
           ),
           BottomNavigationBarItem(
-            icon: _buildImageIcon('assets/images/icons/playlists.png'),
+            icon: _buildImageIcon('assets/images/icons/music-playlist.png'),
             activeIcon: _buildImageIcon(
-              'assets/images/icons/playlists.png',
+              'assets/images/icons/music-playlist.png',
               isActive: true,
             ),
             label: 'Playlists',
           ),
           BottomNavigationBarItem(
-            icon: _buildImageIcon('assets/images/icons/downloads.png'),
+            icon: _buildImageIcon('assets/images/icons/import.png'),
             activeIcon: _buildImageIcon(
-              'assets/images/icons/downloads.png',
+              'assets/images/icons/import.png',
               isActive: true,
             ),
             label: 'Downloads',
@@ -284,8 +286,8 @@ class _HomeManagerState extends State<HomeManager> {
       padding: const EdgeInsets.all(4),
       child: Image.asset(
         assetPath,
-        width: 24,
-        height: 24,
+        width: 30.sp,
+        height: 30.sp,
         color: isActive
             ? Colors.white
             : Theme.of(context).colorScheme.secondary.withOpacity(0.7),
@@ -293,7 +295,7 @@ class _HomeManagerState extends State<HomeManager> {
           // Fallback to a simple icon if image fails to load
           return Icon(
             Icons.error_outline,
-            size: 24,
+            size: 30.sp,
             color: isActive
                 ? Colors.white
                 : Theme.of(context).colorScheme.secondary.withOpacity(0.7),

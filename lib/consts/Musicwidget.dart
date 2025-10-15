@@ -10,23 +10,64 @@ class MusicPlayerBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.of(
-          context,
-          rootNavigator: false,
-        ).push(MaterialPageRoute(builder: (context) => const Musicplaying()));
+        // Use a custom PageRouteBuilder so we can combine Hero animation with
+        // a subtle fade+scale transition. Duration ~600ms for a "slow but
+        // snappy" feel.
+        Navigator.of(context, rootNavigator: false).push(
+          PageRouteBuilder(
+            transitionDuration: const Duration(milliseconds: 400),
+            reverseTransitionDuration: const Duration(milliseconds: 400),
+            pageBuilder: (context, animation, secondaryAnimation) =>
+                const Musicplaying(),
+            transitionsBuilder: (context, animation, secondaryAnimation, child) {
+              // Fade + scale while Hero handles the shared element animation
+              final fade = CurvedAnimation(
+                parent: animation,
+                curve: Curves.easeInOut,
+              );
+              final scale = Tween<double>(begin: 0.98, end: 1.0).animate(
+                CurvedAnimation(parent: animation, curve: Curves.easeOutBack),
+              );
+              return FadeTransition(
+                opacity: fade,
+                child: ScaleTransition(scale: scale, child: child),
+              );
+            },
+          ),
+        );
       },
       child: SizedBox(
         height: 100.h,
         width: 300.w,
         child: Stack(
           children: [
-            // Background image
+            // Background image wrapped with Hero for smooth transition
             Positioned.fill(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(14),
-                child: Image.asset(
-                  'assets/images/albumcover.jpg',
-                  fit: BoxFit.cover,
+                child: Hero(
+                  tag: 'music_hero',
+                  flightShuttleBuilder:
+                      (
+                        flightContext,
+                        animation,
+                        direction,
+                        fromContext,
+                        toContext,
+                      ) {
+                        // Use the default Hero animation but ensure we scale nicely
+                        return ScaleTransition(
+                          scale: Tween<double>(
+                            begin: 1.0,
+                            end: 1.0,
+                          ).animate(animation),
+                          child: fromContext.widget,
+                        );
+                      },
+                  child: Image.asset(
+                    'assets/images/albumcover.jpg',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),

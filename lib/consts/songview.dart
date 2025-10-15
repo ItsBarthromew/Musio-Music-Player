@@ -110,16 +110,30 @@ class _SmallSongDisplayState extends State<SmallSongDisplay> {
 }
 
 //Songs Viewer
-class SongDisplay extends StatefulWidget {
-  const SongDisplay({super.key});
+// Default cover asset (change this to your preferred default image). If you
+// want a custom placeholder widget instead, edit the build logic below.
+const String kDefaultSongCover = 'assets/images/albumcover.jpg';
 
-  @override
-  State<SongDisplay> createState() => _SongDisplayState();
-}
+class SongDisplay extends StatelessWidget {
+  final String? imagePath; // asset path for cover image
+  final String title;
+  final String artist;
+  final String length; // display string like "03:32"
 
-class _SongDisplayState extends State<SongDisplay> {
+  const SongDisplay({
+    super.key,
+    this.imagePath,
+    required this.title,
+    required this.artist,
+    required this.length,
+  });
+
   @override
   Widget build(BuildContext context) {
+    final displayTitle = (title.isEmpty) ? 'Unknown Title' : title;
+    final displayArtist = (artist.isEmpty) ? 'Unknown Artist' : artist;
+    final displayLength = (length.isEmpty) ? '--:--' : length;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Row(
@@ -135,30 +149,27 @@ class _SongDisplayState extends State<SongDisplay> {
             ),
             child: Row(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    '',
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.onSecondary,
-                      fontSize: 24.sp,
-                      fontFamily: 'Cambria',
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+                SizedBox(width: 8.w),
 
+                // Album cover (falls back to default cover asset if null)
                 SizedBox(
                   height: 50.h,
                   width: 50.w,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10.r),
-                    child: Image.asset(
-                      'assets/images/albumcover.jpg',
-                      width: 50.w,
-                      height: 50.h,
-                      fit: BoxFit.cover,
-                    ),
+                    child: (imagePath != null && imagePath!.isNotEmpty)
+                        ? Image.asset(
+                            imagePath!,
+                            width: 50.w,
+                            height: 50.h,
+                            fit: BoxFit.cover,
+                          )
+                        : Image.asset(
+                            kDefaultSongCover,
+                            width: 50.w,
+                            height: 50.h,
+                            fit: BoxFit.cover,
+                          ),
                   ),
                 ),
 
@@ -169,7 +180,7 @@ class _SongDisplayState extends State<SongDisplay> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'COUNT ON ME',
+                        displayTitle.toUpperCase(),
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.onSecondary,
                           fontSize: 20.sp,
@@ -177,15 +188,19 @@ class _SongDisplayState extends State<SongDisplay> {
                           fontFamily: 'Taile',
                           fontWeight: FontWeight.bold,
                         ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                       Text(
-                        'Kendrick Lamar',
+                        displayArtist,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.onSecondary,
                           fontSize: 12.sp,
                           height: 0.8,
                           fontFamily: 'Cambria',
                         ),
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ],
                   ),
@@ -197,7 +212,7 @@ class _SongDisplayState extends State<SongDisplay> {
                     child: Padding(
                       padding: EdgeInsets.only(right: 12.w),
                       child: Text(
-                        "03:32",
+                        displayLength,
                         style: TextStyle(
                           color: Theme.of(context).colorScheme.onSecondary,
                           fontSize: 10.sp,
